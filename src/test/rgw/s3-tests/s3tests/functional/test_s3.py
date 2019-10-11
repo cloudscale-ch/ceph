@@ -4734,6 +4734,7 @@ def test_bucket_acl_grant_userid_writeacp():
     # can write acl
     _check_bucket_acl_grant_can_writeacp(bucket_name)
 
+@pytest.mark.fails_on_slave_zonegroup
 def test_bucket_acl_grant_nonexist_user():
     bucket_name = get_new_bucket()
     client = get_client()
@@ -4960,6 +4961,7 @@ def test_bucket_acl_grant_email():
         ]
     )
 
+@pytest.mark.fails_on_slave_zonegroup
 def test_bucket_acl_grant_email_not_exist():
     # behavior not documented by amazon
     bucket_name = get_new_bucket()
