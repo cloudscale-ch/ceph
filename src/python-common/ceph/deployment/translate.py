@@ -66,7 +66,7 @@ class to_ceph_volume(object):
                 # In this case, 'lvm prepare' has neither a '--report' nor a '--format json' option
                 # which essentially doesn't allow for a proper previews here.
                 # Fall back to lvm batch in order to get a preview.
-                return f"lvm batch --no-auto {' '.join(data_devices)} --report --format json"
+                return "lvm batch --no-auto {} --report --format json".format(' '.join(data_devices))
             return cmd
 
         if self.spec.objectstore == 'bluestore':

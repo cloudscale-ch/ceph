@@ -582,12 +582,12 @@ class RGWSpec(ServiceSpec):
     def rgw_frontends_config_value(self):
         ports = []
         if self.ssl:
-            ports.append(f"ssl_port={self.get_port()}")
-            ports.append(f"ssl_certificate=config://rgw/cert/{self.rgw_realm}/{self.rgw_zone}.crt")
-            ports.append(f"ssl_key=config://rgw/cert/{self.rgw_realm}/{self.rgw_zone}.key")
+            ports.append("ssl_port={}".format(self.get_port()))
+            ports.append("ssl_certificate=config://rgw/cert/{}/{}.crt".format(self.rgw_realm, self.rgw_zone))
+            ports.append("ssl_key=config://rgw/cert/{}/{}.key".format(self.rgw_realm, self.rgw_zone))
         else:
-            ports.append(f"port={self.get_port()}")
-        return f'beast {" ".join(ports)}'
+            ports.append("port={}".format(self.get_port()))
+        return 'beast {}'.format(" ".join(ports))
 
 
 class IscsiServiceSpec(ServiceSpec):
