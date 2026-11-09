@@ -19463,6 +19463,7 @@ _copy_enc_source_modes = {
         },
     },
     'sse-kms': {
+        'marks': [pytest.mark.kms],
         'args': {
             'ServerSideEncryption': 'aws:kms',
             'SSEKMSKeyId': lambda: get_main_kms_keyid()
@@ -19495,6 +19496,7 @@ _copy_enc_dest_modes = {
         )
     },
     'sse-kms': {
+        'marks': [pytest.mark.kms],
         'args': {
             'ServerSideEncryption': 'aws:kms',
             'SSEKMSKeyId': lambda: get_secondary_kms_keyid()
